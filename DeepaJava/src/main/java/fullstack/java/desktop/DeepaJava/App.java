@@ -1,9 +1,19 @@
 package fullstack.java.desktop.DeepaJava;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Date;
+import java.util.Scanner;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterInputStream;
 
 import fullstack.java.desktop.DeepaJava.control.Controller;
 import fullstack.java.desktop.DeepaJava.model.Notes;
+import fullstack.java.desktop.DeepaJava.users.User;
 
 /**
  * Hello world!
@@ -11,26 +21,48 @@ import fullstack.java.desktop.DeepaJava.model.Notes;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException, ClassNotFoundException
     {
-		
+    	File file=new File("hello.zip");
+    	FileOutputStream fos=new FileOutputStream(file);
+    	DeflaterOutputStream dos=new DeflaterOutputStream(fos);
+    	ObjectOutputStream oos=new ObjectOutputStream(dos);
+    	
+    	User user=new User("Razak Mohamed", "Shahul hameed");
+    	
+    	//dos.write(new String("Welcome to zealous").getBytes());
+    	
+    	oos.writeObject(user);
+    	
+    	oos.close();dos.close();fos.close();
+    	
+    	
+    	FileInputStream fis=new FileInputStream(file);
+    	InflaterInputStream iis=new InflaterInputStream(fis);
+    	ObjectInputStream ois=new ObjectInputStream(iis);
+    	
+    	//byte[] tmp=new byte[fis.available()];
+    	//System.out.println(new String(tmp));
+    	
+    	//iis.read(tmp);
+    	
+    	User newOne=(User)ois.readObject();
+    	ois.close();iis.close();fis.close();
+    	System.out.println(newOne);
+    	
+    	
+    	
+    	
 		/*
-		 * Notes note1=Notes.getNotes();//new Notes();
-		 * note1.setTitle("Laptop");note1.setDescription("Hr/Dell gaming laptop");
-		 * note1.setDoc(new Date(2020,10,3));
-		 * 
-		 * Notes note2=new Notes("Full stack", "Java", new Date(2015,6,2));
-		 * 
-		 * 
-		 * Notes note3=new Notes("bike", "bmw, avenger", new Date(2016,2,26)); Notes
-		 * note4=new Notes("scooter", "ola", new Date(2022,1,15)); Notes note5=new
-		 * Notes("car", "thar", new Date(2025,9,11));
+		 * Scanner scan=new Scanner(System.in); boolean proceed=false;
+		 * System.out.println(":Welcome to Zealous Note:"); Controller control=new
+		 * Controller(scan.next(), scan.next()); do {
+		 * System.out.println("Select an option: "); String option=scan.next();
+		 * switch(option) { case "newnote":control.save(new Notes(scan.next(),
+		 * scan.next(), new Date(scan.next())));break; case
+		 * "show":System.out.println(control.findAll());break; }
+		 * System.out.println("Do you wish to proceed?"); proceed=scan.nextBoolean();
+		 * }while(proceed);
 		 */
-		 
-        
-        Controller control=new Controller();
-        //control.save(note1);control.save(note2);control.save(note3);control.save(note4);control.save(note5);
-        System.out.println(control.findAll());
-        System.out.println(control.findAllByCreation(new Date(2017,1,15)));
     }
 }
