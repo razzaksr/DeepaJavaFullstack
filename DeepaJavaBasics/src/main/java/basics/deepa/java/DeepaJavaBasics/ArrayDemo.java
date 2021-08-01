@@ -41,17 +41,34 @@ public class ArrayDemo
 		 * System.out.println(demo.binary(yet, "Industry", 0, yet.length-1));// O(logn)
 		 */		
 		
-		Double[][] hai=new Double[2][5];
-		Character[][] blocks=new Character[2][];
-		demo.initialize(blocks);
-		demo.list(blocks);
-		//Arrays.sort(blocks[0]);
-		//Arrays.sort(blocks[1]);
-		demo.selectionSort(blocks);
-		demo.list(blocks);
-		System.out.println(demo.binary(blocks, 'X', 1, 0, blocks[1].length-1));
+		Double[][] hai={{2.3,0.1,8.9,2.0,1.9},{89.2,78.2,1.2,9.1,12.6,23.9}};//new Double[2][5];
+		Arrays.sort(hai[0]);Arrays.sort(hai[1]);
+		System.out.println(Arrays.toString(hai[0]));
+		System.out.println(Arrays.toString(hai[1]));
+		
+		System.out.println(demo.binary(hai, 12.6, 1, 0, hai[1].length-1));
+		
+		/*
+		 * Character[][] blocks=new Character[2][]; demo.initialize(blocks);
+		 * demo.list(blocks); //Arrays.sort(blocks[0]); //Arrays.sort(blocks[1]);
+		 * demo.selectionSort(blocks); demo.list(blocks);
+		 * System.out.println(demo.binary(blocks, 'X', 1, 0, blocks[1].length-1));
+		 */
 	}
 	Scanner scan=new Scanner(System.in);
+	
+	public int binary(Double[][] wind,Double data,int row,int start,int end)
+	{
+		int mid=(start+end)/2;
+		if(wind[row][mid].compareTo(data)==0)
+			return mid;
+		else if(wind[row][mid].compareTo(data)>0)
+			return binary(wind, data, row, start, mid);
+		else if(wind[row][mid].compareTo(data)<0)
+			return binary(wind, data, row, mid+1, end);
+		else
+			return -1;
+	}
 	
 	public void selectionSort(Character[][] wind)
 	{
