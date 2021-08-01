@@ -42,11 +42,14 @@ public class ArrayDemo
 		 */		
 		
 		Double[][] hai={{2.3,0.1,8.9,2.0,1.9},{89.2,78.2,1.2,9.1,12.6,23.9}};//new Double[2][5];
-		Arrays.sort(hai[0]);Arrays.sort(hai[1]);
+		//Arrays.sort(hai[0]);Arrays.sort(hai[1]);
+		demo.sortQuick(hai[0], 0, hai[0].length-1);
+		demo.sortQuick(hai[1], 0, hai[1].length-1);
+		
 		System.out.println(Arrays.toString(hai[0]));
 		System.out.println(Arrays.toString(hai[1]));
 		
-		System.out.println(demo.binary(hai, 12.6, 1, 0, hai[1].length-1));
+		System.out.println(demo.binary(hai, 2.0, 0, 0, hai[1].length-1));
 		
 		/*
 		 * Character[][] blocks=new Character[2][]; demo.initialize(blocks);
@@ -55,7 +58,43 @@ public class ArrayDemo
 		 * System.out.println(demo.binary(blocks, 'X', 1, 0, blocks[1].length-1));
 		 */
 	}
+	
+	public int quick(Double[] one,int start,int end)
+	{
+		Double pivotalData=one[end];
+		int initial=start-1;
+		
+		for(int index=start;index<end;index++)
+		{
+			if(one[index].compareTo(pivotalData)<0)
+			{
+				initial++;
+				Double third=one[initial];
+				one[initial]=one[index];
+				one[index]=third;
+			}
+		}
+		
+		Double tmp=one[end];
+		one[end]=one[initial+1];
+		one[initial+1]=tmp;
+		
+		return initial+1;
+	}
+	
+	public void sortQuick(Double[] each,int start,int end)
+	{
+		if(start<end)
+		{
+			int pivotPoint=quick(each,start,end);
+			quick(each,start,pivotPoint-1);
+			quick(each,pivotPoint+1,end);
+		}
+	}
+	
 	Scanner scan=new Scanner(System.in);
+	
+	
 	
 	public int binary(Double[][] wind,Double data,int row,int start,int end)
 	{
