@@ -1,11 +1,21 @@
 package basics.deepa.java.DeepaJavaBasics.oop;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class TechCorp implements HumanResource
 {
 	private Resource[] team=new Resource[10];
 	private Resource[] bench=new Resource[10];
+	public void setTeam(Resource[] tmp)
+	{
+		this.team=tmp;
+	}
+	public void setBench(Resource[] tmp)
+	{
+		this.bench=tmp;
+	}
+	Scanner scan=new Scanner(System.in);
 
 	@Override
 	public String toString() {
@@ -15,28 +25,50 @@ public class TechCorp implements HumanResource
 	@Override
 	public String recruite(Resource resource) {
 		// TODO Auto-generated method stub
-		for(int index=0;index<team.length;index++)
+		try
 		{
-			if(team[index]==null)
+			for(int index=0;index<team.length;index++)
 			{
-				team[index]=resource;
-				return resource.getName()+" has recruited ";
+				if(team[index]==null)
+				{
+					team[index]=resource;
+					return resource.getName()+" has recruited ";
+				}
 			}
+			throw new ResourceException();
 		}
-		return resource.getName()+" hasn't recruited";
+		catch(ResourceException res)
+		{
+			return res.toString();
+		}
 	}
 
 	@Override
 	public String release(int index) {
 		// TODO Auto-generated method stub
-		if(index<team.length)
+		try {
+			if(team[index]!=null&&index<team.length)
 			{
+				String name=team[index].getName();
 				team[index]=null;
-				return team[index].getName()+" has released ";
+				return name+" has released ";
 			}
-		else
+			else
+			{
+				throw new ResourceException();
+			}
+		}
+		catch(ResourceException res)
 		{
-			return "Invalid index";
+			System.out.println(res);
+			String inds="";
+			for(int pos=0;pos<team.length;pos++)
+			{
+				if(team[pos]==null)
+					inds+=pos+" ";
+			}
+			System.out.println("Tell us index once again within "+team.length+" also excluding "+inds);
+			return release(scan.nextInt());
 		}
 	}
 
@@ -44,63 +76,123 @@ public class TechCorp implements HumanResource
 	public String[] release(String tech) {
 		// TODO Auto-generated method stub
 		String[] tmp=new String[team.length];
-		for(int index=0,pos=0;index<team.length;index++)
+		try
 		{
-			if(Arrays.toString(team[index].getTech()).contains(tech))
+			for(int index=0,pos=0;index<team.length;index++)
 			{
-				tmp[pos]=team[index].getName();
-				team[index]=null;
-				pos++;
+				if(Arrays.toString(team[index].getTech()).contains(tech))
+				{
+					tmp[pos]=team[index].getName();
+					team[index]=null;
+					pos++;
+				}
+			}
+			if(tmp[0]==null)
+			{
+				throw new ResourceException();
+			}
+			else {
+				return tmp;
 			}
 		}
-		return tmp;
+		catch(ResourceException res)
+		{
+			System.out.println(res);
+			System.out.println("Tell us skillset once again: ");
+			return release(scan.next());
+		}
 	}
 
 	@Override
 	public void update(Resource resource) {
 		// TODO Auto-generated method stub
-		for(int index=0;index<team.length;index++)
+		try
 		{
-			if(team[index].getName().equals(resource.getName()))
+			for(int index=0;index<team.length;index++)
 			{
-				team[index]=resource;
-				System.out.println(resource.getName()+" has updated ");
-				return;
+				if(team[index]!=null&&team[index].getName().equals(resource.getName()))
+				{
+					team[index]=resource;
+					System.out.println(resource.getName()+" has updated ");
+					return;
+				}
 			}
+			throw new ResourceException();
 		}
-		System.out.println(resource.getName()+" not part of the team");
+		catch(ResourceException res)
+		{
+			System.out.println(res);
+			System.out.println(resource.getName()+" not part of the team");
+			System.out.println("Update people by name, skills, experience");
+			Resource ress=new Resource();
+			ress.setName(scan.next());
+			System.out.println("Tell us how many skill you have: ");
+			int sizes=scan.nextInt();
+			String[] tecs=new String[sizes];
+			System.out.println("Tell your each skill one by one: ");
+			for(int index=0;index<tecs.length;index++)
+			{
+				tecs[index]=scan.next();
+			}
+			ress.setTech(tecs);
+			ress.setExperience(scan.nextInt());
+			update(ress);
+		}
 	}
 
 	@Override
 	public Resource[] filter(String tech) {
 		// TODO Auto-generated method stub
-		System.out.println("Filter based on skill: "+tech);
-		Resource[] tmp=new Resource[team.length];
-		for(int index=0,pos=0;index<team.length;index++)
+		try
 		{
-			if(Arrays.toString(team[index].getTech()).contains(tech))
+			System.out.println("Filter based on skill: "+tech);
+			Resource[] tmp=new Resource[team.length];
+			for(int index=0,pos=0;index<team.length;index++)
 			{
-				tmp[pos]=team[index];
-				pos++;
+				if(team[index]!=null&&Arrays.toString(team[index].getTech()).contains(tech))
+				{
+					tmp[pos]=team[index];
+					pos++;
+				}
 			}
+			if(tmp[0]==null)
+				throw new ResourceException();
+			else
+				return tmp;
 		}
-		return tmp;
+		catch(ResourceException res)
+		{
+			System.out.println(res);
+			System.out.println("Tell us skillset once again: ");
+			return filter(scan.next());
+		}
 	}
 
 	@Override
 	public Resource[] filter(Integer exp) {
 		// TODO Auto-generated method stub
-		System.out.println("Filter based on experience: "+exp);
-		Resource[] tmp=new Resource[team.length];
-		for(int index=0,pos=0;index<team.length;index++)
-		{
-			if(team[index].getExperience()>=exp)
+		try {
+			System.out.println("Filter based on experience: "+exp);
+			Resource[] tmp=new Resource[team.length];
+			for(int index=0,pos=0;index<team.length;index++)
 			{
-				tmp[pos]=team[index];
-				pos++;
+				if(team[index]!=null&&team[index].getExperience()>=exp)
+				{
+					tmp[pos]=team[index];
+					pos++;
+				}
 			}
+			if(tmp[0]==null)
+				throw new ResourceException();
+			else
+				return tmp;
 		}
-		return tmp;
+		catch(ResourceException res)
+		{
+			System.out.println(res);
+			System.out.println("Tell us experience once again: ");
+			return filter(scan.nextInt());
+		}
 	}
 
 	@Override
@@ -132,20 +224,25 @@ public class TechCorp implements HumanResource
 		// TODO Auto-generated method stub
 		for(int index=0;index<bench.length;index++)
 		{
-			if(Arrays.toString(bench[index].getTech()).contains(skill))
+			if(bench[index]!=null&&Arrays.toString(bench[index].getTech()).contains(skill))
 			{
 				for(int ind=0;ind<team.length;ind++)
 				{
 					if(team[ind]==null)
 					{
-						team[index]=bench[index];
+						team[ind]=bench[index];
 						System.out.println(bench[index].getName()+" has redeemed to project ");
+						bench[index]=null;
+						break;
 					}
 				}
 			}
 			else {
-				System.out.println(bench[index].getName()+" has sack");
-				bench[index]=null;
+				if(bench[index]!=null)
+				{
+					System.out.println(bench[index].getName()+" has sack");
+					bench[index]=null;
+				}
 			}
 		}
 	}

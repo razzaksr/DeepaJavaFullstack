@@ -9,6 +9,18 @@ public class HRManager
 	public static void main(String[] args) 
 	{
 		TechCorp corp=new TechCorp();
+		corp.setTeam(new Resource[] {
+				new Resource("RazakMohamedS", new String[] {"java","javascript","python"}, 10),
+				new Resource("SabarinathanS", new String[] {"python"}, 13),
+				new Resource("ManikandanM", new String[] {"javascript"}, 7),
+				new Resource("MaheshwaranM", new String[] {"java"}, 15),
+				new Resource("MularidharanM", new String[] {"C","CPP"}, 5),
+				new Resource("SobinSunny", new String[] {"python"}, 7),
+				new Resource("AasaiJay", new String[] {"java","python"}, 15),
+				new Resource("RasheedhaR", new String[] {"java"}, 8),
+				new Resource("AnnamalaiS", new String[] {"java","python"}, 5),
+				new Resource("Anto", new String[] {"R"}, 3),
+		});
 		do 
 		{
 			System.out.println("HR Privilages");
