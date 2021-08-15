@@ -125,7 +125,7 @@ class TecCorp implements HumanResource
 	public String recruite(Resource resource) {
 		// TODO Auto-generated method stub
 		team.add(resource);
-		return resource.getName()+" has recruited ";
+		return resource.getName()+" has recruited";
 	}
 
 	@Override
