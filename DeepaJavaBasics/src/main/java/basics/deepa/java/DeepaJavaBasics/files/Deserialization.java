@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Deserialization 
 {
@@ -13,9 +15,11 @@ public class Deserialization
 		FileInputStream fis=new FileInputStream(file);
 		ObjectInputStream ois=new ObjectInputStream(fis);
 		
-		Car tmp=(Car)ois.readObject();
+		List<Car> list=new ArrayList<Car>();
 		
-		System.out.println(tmp);
+		list=(List<Car>)ois.readObject();
+		
+		System.out.println(list.toString());
 		
 		ois.close();
 		fis.close();

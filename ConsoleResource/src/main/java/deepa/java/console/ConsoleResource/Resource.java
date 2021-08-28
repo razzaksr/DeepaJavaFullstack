@@ -1,4 +1,4 @@
-package basics.deepa.java.DeepaJavaBasics.oop;
+package deepa.java.console.ConsoleResource;
 
 import java.io.Serializable;
 import java.util.Arrays;
