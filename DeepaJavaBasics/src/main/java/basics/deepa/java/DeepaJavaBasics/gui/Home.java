@@ -13,6 +13,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -45,6 +48,9 @@ public class Home extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\git\\DeepaJavaFullstack\\DeepaJavaBasics\\src\\main\\java\\razak.png"));
 		setTitle("ResourceRepository");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
 		setBounds(100, 100, 794, 400);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -66,18 +72,45 @@ public class Home extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Sack");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Fire fire=new Fire();
+				fire.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JSeparator separator = new JSeparator();
 		mnNewMenu.add(separator);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Update");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Update up=new Update();
+				up.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JSeparator separator_1 = new JSeparator();
 		mnNewMenu.add(separator_1);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("ToBench");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Hold hold=new Hold();
+				hold.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Redeem");
@@ -99,6 +132,15 @@ public class Home extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("My Bench");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Bench bench=new Bench();
+				bench.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_6);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Filter");
@@ -107,6 +149,15 @@ public class Home extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			SwingUtilities.updateComponentTreeUI(contentPane);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

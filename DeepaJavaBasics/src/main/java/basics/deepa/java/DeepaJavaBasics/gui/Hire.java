@@ -12,6 +12,8 @@ import basics.deepa.java.DeepaJavaBasics.oop.Resource;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
@@ -51,6 +53,7 @@ public class Hire extends JFrame {
 	 */
 	public Hire() {
 		setBackground(Color.BLUE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\git\\DeepaJavaFullstack\\DeepaJavaBasics\\src\\main\\java\\razak.png"));
 		setResizable(false);
 		setTitle("Hiring New Resource");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
