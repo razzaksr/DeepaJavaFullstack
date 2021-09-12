@@ -1,4 +1,4 @@
-package basics.deepa.java.DeepaJavaBasics.gui;
+package gui.deepa.DeepaGUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -24,7 +26,8 @@ import javax.swing.JSeparator;
 public class Home extends JFrame {
 
 	private JPanel contentPane;
-
+	File file1=new File("D:\\Course backups\\Java\\Deepa\\jar\\corp.doc");
+	File file2=new File("D:\\Course backups\\Java\\Deepa\\jar\\bench.doc");
 	/**
 	 * Launch the application.
 	 */
@@ -45,9 +48,22 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\git\\DeepaJavaFullstack\\DeepaJavaBasics\\src\\main\\java\\razak.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(App.class.getResource("/razak.png")));
 		setTitle("ResourceRepository");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			if(!file1.exists())
+			{
+				file1.createNewFile();
+			}
+			if(!file2.exists())
+			{
+				file2.createNewFile();
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 		
@@ -168,18 +184,9 @@ public class Home extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			SwingUtilities.updateComponentTreeUI(contentPane);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ADMIN\\git\\DeepaJavaFullstack\\DeepaJavaBasics\\src\\main\\java\\razak.png"));
+		lblNewLabel.setIcon(new ImageIcon(Home.class.getResource("/razak.png")));
 		contentPane.add(lblNewLabel, BorderLayout.CENTER);
 	}
 

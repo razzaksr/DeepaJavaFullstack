@@ -1,4 +1,4 @@
-package basics.deepa.java.DeepaJavaBasics.gui;
+package gui.deepa.DeepaGUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -18,8 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import basics.deepa.java.DeepaJavaBasics.oop.Resource;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -45,7 +43,7 @@ public class TeamView extends JFrame {
 	 */
 	public TeamView() {
 		setTitle("View My team");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\git\\DeepaJavaFullstack\\DeepaJavaBasics\\src\\main\\java\\razak.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(App.class.getResource("/razak.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -66,7 +64,7 @@ public class TeamView extends JFrame {
 		List<Resource> tmp=new ArrayList<Resource>();
 		try {
 			//if(fis.read()!=-1)
-			File file=new File("D:\\Course backups\\Java\\Deepa\\corp.doc");
+			File file=new File("D:\\Course backups\\Java\\Deepa\\jar\\corp.doc");
 			FileInputStream fis=new FileInputStream(file);
 			ObjectInputStream ois=new ObjectInputStream(fis);
 				tmp = (List<Resource>) ois.readObject();
