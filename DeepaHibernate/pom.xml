@@ -37,7 +37,23 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.26</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-ehcache</artifactId>
+    <version>6.0.0.Alpha7</version>
+    <type>pom</type>
+</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.ehcache/ehcache -->
+	<dependency>
+	    <groupId>org.ehcache</groupId>
+	    <artifactId>ehcache</artifactId>
+	    <version>3.9.6</version>
+	</dependency>
+		
   </dependencies>
+  
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

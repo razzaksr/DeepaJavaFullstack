@@ -24,10 +24,12 @@ public class App
     	Pen pen3=new Pen("Reach2", "Bindas", "Green", 12, 900);
     	//Pen pen1=new Pen("Polo5", "Camlin", "Black", 7, 450);
     	//Pen pen2=new Pen("Polo3", "Camlin", "Black", 7, 450);
-    	session.save(pen1);session.save(pen2);session.save(pen3);
+    	session.save(pen1);session.save(pen2);session.save(pen3);//persist
     	
     	session.getTransaction().commit();
     	session.close();
+    	
+    	//objects will be detached
     	
     	
     	factory.close();
