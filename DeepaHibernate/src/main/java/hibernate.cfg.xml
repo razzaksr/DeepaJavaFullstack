@@ -14,12 +14,15 @@
         <!-- <property name="hibernate.cache.use_second_level_cache">true</property> -->
 		<!-- <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->
 		<!-- <property name="hibernate.cache.provider_class">org.ehcache.core.spi.service.ServiceFactory</property> -->
-		<property name="cache.use_second_level_cache">true</property>   
-        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>  
-        <property name="hbm2ddl.auto">update</property>
+		<!-- <property name="cache.use_second_level_cache">true</property>   
+        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->  
+        <property name="hbm2ddl.auto">create</property>
         
         <!-- <mapping class="basics.maven.hiber.DeepaHibernate.Pen"/> -->
-        <mapping class="basics.maven.hiber.DeepaHibernate.week2.Resource"/>
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week2.Resource"/> -->
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week3.Product"/> -->
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week3.Goods"/> -->
+        <mapping class="basics.maven.hiber.DeepaHibernate.week3.Stocks"/>
         
     </session-factory>
 </hibernate-configuration>
