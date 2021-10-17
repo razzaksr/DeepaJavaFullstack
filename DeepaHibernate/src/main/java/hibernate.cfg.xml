@@ -11,18 +11,21 @@
         <!-- <property name="hibernate.connection.pool_size">1</property> -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <!-- <property name="hibernate.cache.use_second_level_cache">true</property> -->
-		<!-- <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->
-		<!-- <property name="hibernate.cache.provider_class">org.ehcache.core.spi.service.ServiceFactory</property> -->
-		<!-- <property name="cache.use_second_level_cache">true</property>   
-        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->  
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
         <property name="hbm2ddl.auto">create</property>
         
         <!-- <mapping class="basics.maven.hiber.DeepaHibernate.Pen"/> -->
         <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week2.Resource"/> -->
         <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week3.Product"/> -->
         <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week3.Goods"/> -->
-        <mapping class="basics.maven.hiber.DeepaHibernate.week3.Stocks"/>
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week3.Stocks"/> -->
+        
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week4.Furniture"/> -->
+        <!-- <mapping class="basics.maven.hiber.DeepaHibernate.week4.Course"/> -->
+        <mapping class="basics.maven.hiber.DeepaHibernate.week4.Product"/>
+        <mapping class="basics.maven.hiber.DeepaHibernate.week4.ResourcePerson"/>
         
     </session-factory>
 </hibernate-configuration>
