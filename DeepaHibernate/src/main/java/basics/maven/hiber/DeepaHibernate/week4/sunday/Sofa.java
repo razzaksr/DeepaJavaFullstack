@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="getByName",query="from Sofa where brand=:hai")
+@NamedNativeQuery(name="getByMaterial",query="select * from sofa where material like '%Foam%'",resultClass = Sofa.class)
 public class Sofa 
 {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
