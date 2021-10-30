@@ -34,4 +34,29 @@ public class JpaController
 		Forum forum1=new Forum(nm, tech, count, incharge, hours);
 		System.out.println(repo.save(forum1)+" has saved");
 	}
+	
+	@RequestMapping("/get/{id}")
+	public void getSome(@PathVariable("id") int id)
+	{
+		System.out.println(repo.findById(id));
+	}
+	
+	@RequestMapping("/gets/{count}")
+	public void getSomeCount(@PathVariable("count") int count)
+	{
+		System.out.println(repo.findByMembersCount(count));
+	}
+	
+	@RequestMapping("/geth/{count}")
+	public void getSomeHours(@PathVariable("count") int count)
+	{
+		System.out.println(repo.findByProductionHours(count));
+	}
+	
+	@RequestMapping("/getn/{count}")
+	public void getNamesCount(@PathVariable("count") int count)
+	{
+		System.out.println(repo.gettingNamesByCount(count));
+	}
+	
 }
