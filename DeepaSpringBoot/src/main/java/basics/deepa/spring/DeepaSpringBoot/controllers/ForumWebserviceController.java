@@ -28,6 +28,12 @@ public class ForumWebserviceController
 		return service.every();
 	}
 	
+	@GetMapping(value = "/xml",produces = "application/xml")
+	public List<Forum> getXml()
+	{
+		return service.every();
+	}
+	
 	@GetMapping("/one/{id}")
 	public Forum each(@PathVariable("id") Integer id)
 	{
@@ -36,6 +42,12 @@ public class ForumWebserviceController
 	
 	@PostMapping("/add")
 	public String add(@RequestBody Forum forum)
+	{
+		return service.inserting(forum);
+	}
+	
+	@PostMapping(value="/addxml",consumes = "application/xml")
+	public String adding(@RequestBody Forum forum)
 	{
 		return service.inserting(forum);
 	}
