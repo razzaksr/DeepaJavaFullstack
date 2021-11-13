@@ -21,7 +21,7 @@ public class JpaService
 	
 	public String inserting(Forum forum)
 	{
-		return repo.save(forum).getName()+" has inserted";
+		return repo.save(forum).getName()+" has Affected";
 	}
 	
 	public List<Forum> every()
