@@ -21,6 +21,15 @@ public class Forum implements Serializable
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public Forum(int forumId, String name, String technology, int membersCount, String head, int productionHours) {
+		super();
+		this.forumId = forumId;
+		this.name = name;
+		this.technology = technology;
+		this.membersCount = membersCount;
+		this.head = head;
+		this.productionHours = productionHours;
+	}
 	public Forum(String name, String technology, int membersCount, String head, int productionHours) {
 		super();
 		this.name = name;

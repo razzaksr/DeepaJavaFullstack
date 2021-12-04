@@ -34,6 +34,13 @@ public class JpaService
 		return repo.findById(id).orElse(new Forum());
 	}
 	
+	public Forum reachedOne(Integer id)
+	{
+		System.out.println(id);
+		System.out.println(repo.findById(id));
+		return repo.getById(id);
+	}
+	
 	public String eraseOne(Integer id)
 	{
 		String hai=reachOne(id).getName()+" has deleted";
