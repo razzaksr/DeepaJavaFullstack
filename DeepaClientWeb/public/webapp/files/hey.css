@@ -1,0 +1,40 @@
+.my-design
+{
+	margin: 10% 30%;
+	box-shadow: 10px 10px 10px blue;
+	border-radius:10px;
+	padding: 5px 5px 5px 5px;
+	background-color: grey;
+	color:white;
+}
+
+.my-div1
+{
+	padding: 5px 5px;
+	margin-bottom: 10px;
+}
+.my-div2
+{
+	padding: 25px 25px;
+	margin-bottom: 10px;
+	background-color: blue;
+	color: green;
+}
+.my-div3
+{
+	font-family: cursive;
+	color:black;
+	background-color: yellow;
+}
+.my-div4
+{
+	align-content: space-around;
+	align-self: center;
+}
+
+
+
+label
+{
+	margin-right: 30px;
+}
